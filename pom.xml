@@ -23,7 +23,6 @@
     <module>review</module>
     <module>shipping</module>
     <module>shopping-cart</module>
-    <module>rosilla</module>
   </modules>
 
   <properties>

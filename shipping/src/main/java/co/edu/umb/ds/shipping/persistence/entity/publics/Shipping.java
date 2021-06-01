@@ -1,7 +1,7 @@
 
-package co.edu.umb.ds.rosilla.persistence.entity.publics;
+package co.edu.umb.ds.shipping.persistence.entity.publics;
 
-import co.edu.umb.ds.rosilla.persistence.lasting.EQueryList;
+import co.edu.umb.ds.shipping.persistence.lasting.EQueryList;
 import com.spiwer.rosilla.database.DatabaseManager;
 import com.spiwer.rosilla.dto.Param;
 import com.spiwer.rosilla.exception.JdbcException;
@@ -17,13 +17,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 /**
  * @author Manuel Ernesto Bonilla Muñoz - mebonilla9@gmail.com
  */
-
 public class Shipping extends EntityManager<Shipping> implements Serializable {
-
 
   private static final long serialVersionUID = 30392615933738424L;
   public static final String TABLE_NAME = "public.shipping";
@@ -34,13 +31,11 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
   public static final String COL_RECEIVED_AT = "received_at";
   public static final String COL_ID_ORDER_HISTORY = "id_order_history";
 
-
   private Integer id;
   private String address;
   private LocalDateTime sentAt;
   private LocalDateTime receivedAt;
   private OrderHistory idOrderHistory;
-
 
   public Shipping() {
     super(TABLE_NAME);
@@ -51,7 +46,6 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
     super.set(COL_ID);
     this.id = id;
   }
-
 
   @Override
   public PrimaryKey primaryKey() {
@@ -115,16 +109,13 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
     return this;
   }
 
-
   @Override
   public Shipping validate() throws AppException {
     return this;
   }
 
   @Override
-  public Shipping getRegister(Retrieve retrieve)
-    throws JdbcException {
-
+  public Shipping getRegister(Retrieve retrieve) throws JdbcException {
     Integer idCol = retrieve.getObjectOptional(COL_ID, Integer.class);
     if (idCol != null) {
       setId(idCol);
@@ -147,13 +138,11 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
       objIdOrderHistory.setId(idOrderHistoryCol);
       setIdOrderHistory(objIdOrderHistory);
     }
-
     return this;
   }
 
   @Override
-  public Object getValue(String columnName)
-    throws AppException {
+  public Object getValue(String columnName) throws AppException {
     switch (columnName) {
       case COL_ID:
         return id;
@@ -165,12 +154,10 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
         return receivedAt;
       case COL_ID_ORDER_HISTORY:
         return idOrderHistory == null ? null : idOrderHistory.getId();
-
       default:
         throw new AppException(EMessageRosilla.ERROR_DATABASE_COLUMN_NO_FOUND_NAME, columnName);
     }
   }
-
 
   public static List<Shipping> list(EQueryList sqlName, Param<String, Object> params)
     throws JdbcException {
@@ -186,6 +173,5 @@ public class Shipping extends EntityManager<Shipping> implements Serializable {
     throws JdbcException {
     return new Shipping().getRegister(retrieve);
   }
-
 
 }

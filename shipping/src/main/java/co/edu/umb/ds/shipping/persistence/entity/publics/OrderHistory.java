@@ -1,7 +1,7 @@
 
-package co.edu.umb.ds.rosilla.persistence.entity.publics;
+package co.edu.umb.ds.shipping.persistence.entity.publics;
 
-import co.edu.umb.ds.rosilla.persistence.lasting.EQueryList;
+import co.edu.umb.ds.shipping.persistence.lasting.EQueryList;
 import com.spiwer.rosilla.database.DatabaseManager;
 import com.spiwer.rosilla.dto.Param;
 import com.spiwer.rosilla.exception.JdbcException;
@@ -20,9 +20,7 @@ import java.util.List;
 /**
  * @author Manuel Ernesto Bonilla Muñoz - mebonilla9@gmail.com
  */
-
 public class OrderHistory extends EntityManager<OrderHistory> implements Serializable {
-
 
   private static final long serialVersionUID = 8919205158058884392L;
   public static final String TABLE_NAME = "public.order_history";
@@ -32,17 +30,14 @@ public class OrderHistory extends EntityManager<OrderHistory> implements Seriali
   public static final String COL_TOTAL_PRICE = "total_price";
   public static final String COL_PRODUCTS = "products";
 
-
   private Integer id;
   private Integer quantity;
   private Double totalPrice;
   private String products;
 
-
   public OrderHistory() {
     super(TABLE_NAME);
   }
-
 
   @Override
   public PrimaryKey primaryKey() {
@@ -96,16 +91,13 @@ public class OrderHistory extends EntityManager<OrderHistory> implements Seriali
     return this;
   }
 
-
   @Override
   public OrderHistory validate() throws AppException {
     return this;
   }
 
   @Override
-  public OrderHistory getRegister(Retrieve retrieve)
-    throws JdbcException {
-
+  public OrderHistory getRegister(Retrieve retrieve) throws JdbcException {
     Integer idCol = retrieve.getObjectOptional(COL_ID, Integer.class);
     if (idCol != null) {
       setId(idCol);
@@ -122,7 +114,6 @@ public class OrderHistory extends EntityManager<OrderHistory> implements Seriali
     if (productsCol != null) {
       setProducts(productsCol);
     }
-
     return this;
   }
 
@@ -138,12 +129,10 @@ public class OrderHistory extends EntityManager<OrderHistory> implements Seriali
         return totalPrice;
       case COL_PRODUCTS:
         return products;
-
       default:
         throw new AppException(EMessageRosilla.ERROR_DATABASE_COLUMN_NO_FOUND_NAME, columnName);
     }
   }
-
 
   public static List<OrderHistory> list(EQueryList sqlName, Param<String, Object> params)
     throws JdbcException {
@@ -159,6 +148,5 @@ public class OrderHistory extends EntityManager<OrderHistory> implements Seriali
     throws JdbcException {
     return new OrderHistory().getRegister(retrieve);
   }
-
 
 }

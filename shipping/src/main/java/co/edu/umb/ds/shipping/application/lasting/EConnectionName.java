@@ -1,4 +1,4 @@
-package co.edu.umb.ds.rosilla.application.lasting;
+package co.edu.umb.ds.shipping.application.lasting;
 
 import com.spiwer.standard.template.IConnectionName;
 

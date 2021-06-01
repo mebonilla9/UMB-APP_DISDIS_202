@@ -1,4 +1,4 @@
-package co.edu.umb.ds.rosilla.persistence.lasting;
+package co.edu.umb.ds.shipping.persistence.lasting;
 
 import com.spiwer.rosilla.template.SQLName;
 

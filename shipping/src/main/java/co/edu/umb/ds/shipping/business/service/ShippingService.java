@@ -15,7 +15,7 @@ public class ShippingService {
     return new Shipping().where().and(Shipping.COL_ID_ORDER_HISTORY, "=", orderHistory).list();
   }
 
-  @KafkaListener(topics = Topics.ORDER_HISTORY_TOPIC, groupId = "shipping_group",
+  @KafkaListener(topics = Topics.ORDER_HISTORY_TOPIC, groupId = "order_from_shipping",
     containerFactory = "orderHistoryKafkaListenerFactory")
   public void saveShipping(Shipping shipping) throws JdbcException {
     shipping.insert();

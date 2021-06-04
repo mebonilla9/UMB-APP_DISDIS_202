@@ -22,7 +22,7 @@ public class DatabaseConnection extends ConnectionManager implements IDatabaseCo
     public  Connection connect() throws AppException {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection cnn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/e_commerce", "recipes", "recipes");
+            Connection cnn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/dbshipping", "shipuser", "shipass");
             cnn.setAutoCommit(false);
             return cnn;
         } catch (SQLException|ClassNotFoundException ex) {
